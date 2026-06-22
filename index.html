@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nazmul Islam - Interactive CV</title>
+    <style>
+        :root {
+            --primary-bg: #f8f9fa;
+            --text-main: #333333;
+            --accent-dark: #2c3e50;
+            --accent-blue: #3498db;
+            --card-bg: #ffffff;
+            --tag-bg: #e8f4f8;
+            --border-color: #e0e0e0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background-color: var(--accent-dark);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            letter-spacing: 1px;
+        }
+        header p {
+            font-size: 1.1rem;
+            color: #bdc3c7;
+            max-width: 700px;
+            margin: 1rem auto 0;
+        }
+        header a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+        .container {
+            max-width: 950px;
+            margin: -2rem auto 3rem;
+            padding: 0 2rem;
+        }
+        
+        /* Filter Navigation */
+        .filter-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            background: var(--card-bg);
+            border: 2px solid var(--accent-blue);
+            color: var(--accent-dark);
+            padding: 0.6rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--accent-blue);
+            color: white;
+            box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+        }
+
+        /* CV Cards */
+        .card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 1.5rem;
+            border-left: 5px solid var(--accent-dark);
+            display: none; 
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+        .card.show {
+            display: block;
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+        .card-header h2 {
+            margin: 0;
+            color: var(--accent-dark);
+            font-size: 1.4rem;
+        }
+        .card-header .subtitle {
+            font-weight: bold;
+            color: #555;
+            margin-top: 0.2rem;
+        }
+        .date-badge {
+            background: #ecf0f1;
+            color: #7f8c8d;
+            padding: 0.3rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        .card p {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        ul {
+            margin-top: 0;
+            padding-left: 1.2rem;
+            font-size: 0.95rem;
+        }
+        ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .tags {
+            margin-top: 1rem;
+        }
+        .tag {
+            display: inline-block;
+            background: var(--tag-bg);
+            color: var(--accent-blue);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Nazmul Islam (He/him) [cite: 58]</h1>
+        <p>Mechanical Engineering Student [cite: 59]</p>
+        <p>Kelowna, BC (Open to relocations) | nazmul38@student.ubc.ca | 7785810508 [cite: 60]</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="filter-nav">
+            <button class="filter-btn active" onclick="filterSelection('all')">All</button>
+            <button class="filter-btn" onclick="filterSelection('education')">Education</button>
+            <button class="filter-btn" onclick="filterSelection('experience')">Work Experience</button>
+            <button class="filter-btn" onclick="filterSelection('projects')">Technical Projects</button>
+            <button class="filter-btn" onclick="filterSelection('skills')">Skills & Training</button>
+        </div>
+
+        <div class="card item education">
+            <div class="card-header">
+                <div>
+                    <h2>University of British Columbia, Okanagan, BC [cite: 62]</h2>
+                    <div class="subtitle">Master of Engineering - Mechanical Engineering [cite: 63]</div>
+                </div>
+                <div class="date-badge">Expected Aug 2027 [cite: 65]</div>
+            </div>
+            <p><strong>Co-op:</strong> Available for 12 months beginning September 2026 [cite: 64]</p>
+            <p><strong>Related Courses:</strong> Project Planning and Control, Facility Planning, Professional Communication for Engineering Leaders, Finite Element Method, Autonomous Vehicle Technology [cite: 66, 67]</p>
+        </div>
+
+        <div class="card item education">
+            <div class="card-header">
+                <div>
+                    <h2>Bangladesh University of Textiles, Dhaka [cite: 68]</h2>
+                    <div class="subtitle">Bachelor of Science - Manufacturing Engineering [cite: 69]</div>
+                </div>
+                <div class="date-badge">Graduated: April 2017 [cite: 70]</div>
+            </div>
+            <p><strong>Related Courses:</strong> Engineering Drawing, Production Planning and Control, Automation and Control, Industrial Engineering [cite: 71]</p>
+        </div>
+
+        <div class="card item experience">
+            <div class="card-header">
+                <div>
+                    <h2>NEXT Sourcing Ltd., Bangladesh Liaison Office [cite: 96]</h2>
+                    <div class="subtitle">Technologist - Product Development [cite: 96]</div>
+                </div>
+                <div class="date-badge">Mar 2022 - Jun 2025 [cite: 97]</div>
+            </div>
+            <ul>
+                <li>Coordinated technical product development across 42 manufacturing facilities, collaborating with suppliers, production teams, and global stakeholders to support product commercialization, technical compliance, and on-time delivery[cite: 98].</li>
+                <li>Managed technical specifications, supplier documentation, quotations, and development records for 250+ articles monthly using SAP ERP (Citrix) and Google Workspace, ensuring accurate project tracking and supporting data-driven decision-making[cite: 98].</li>
+                <li>Conducted factory assessments with site inspections, monitored critical paths, and analyzed production and development issues using MS Excel, partnering with cross-functional teams to implement corrective actions, improve operational efficiency, and support successful project execution[cite: 99].</li>
+            </ul>
+        </div>
+
+        <div class="card item experience">
+            <div class="card-header">
+                <div>
+                    <h2>Square Denim Mills Limited, Bangladesh [cite: 100]</h2>
+                    <div class="subtitle">R&D Executive [cite: 100]</div>
+                </div>
+                <div class="date-badge">Dec 2020 - Mar 2022 [cite: 101]</div>
+            </div>
+            <ul>
+                <li>Led process optimization and continuous improvement initiatives within large-scale denim manufacturing operations producing 3 million yards monthly, collaborating with production, maintenance, and quality teams to improve productivity, process stability, and product quality[cite: 102].</li>
+                <li>Analyzed production data, Bill of Materials (BOM), operational metrics, and machine performance across 300 manufacturing machines to identify bottlenecks, support data-driven decision-making, and reduce process variability and lead times[cite: 103].</li>
+            </ul>
+        </div>
+
+        <div class="card item experience">
+            <div class="card-header">
+                <div>
+                    <h2>Nice Denim Mills Limited, Bangladesh [cite: 105]</h2>
+                    <div class="subtitle">R&D Executive [cite: 105]</div>
+                </div>
+                <div class="date-badge">Feb 2017 - Feb 2019 [cite: 106]</div>
+            </div>
+            <ul>
+                <li>Assisted in the installation and commissioning of three industrial dyeing machines by conducting site verification, equipment layout reviews, field inspections, and coordination with contractors, maintenance, and production teams during a facility expansion project[cite: 107].</li>
+                <li>Supported manufacturing operations and process improvement initiatives through production monitoring, work studies, troubleshooting activities, and collaboration with production, maintenance, and quality teams[cite: 108].</li>
+            </ul>
+        </div>
+
+        <div class="card item projects">
+            <div class="card-header">
+                <div>
+                    <h2>Improving Plant Layout and Material Handling for Motorcoach Workshop [cite: 76]</h2>
+                </div>
+                <div class="date-badge">Mar 2026 - Apr 2026 [cite: 77]</div>
+            </div>
+            <p>Analyzed complex industrial workflows and applied layout optimization techniques i.e. mCraft and Graph theory, to improve space utilization and material flow efficiency across scaled manufacturing facilities[cite: 78].</p>
+            <div class="tags">
+                <span class="tag">mCraft</span>
+                <span class="tag">Graph Theory</span>
+                <span class="tag">Layout Optimization</span>
+            </div>
+        </div>
+
+        <div class="card item projects">
+            <div class="card-header">
+                <div>
+                    <h2>AWMAS - Abandoned Well Monitoring and Alarm System [cite: 80]</h2>
+                </div>
+                <div class="date-badge">Jan 2026 - Apr 2026 [cite: 80]</div>
+            </div>
+            <ul>
+                <li>Collaborated in a group to develop mechanical drawings and hardware schematics in SolidWorks to support prototype design, fabrication, and testing activities[cite: 80].</li>
+                <li>Applied Lean methodologies including Lean Canvas, Iceberg Model, and Causal Loop Diagrams to evaluate user requirements and improve product functionality throughout development[cite: 81].</li>
+            </ul>
+            <div class="tags">
+                <span class="tag">SolidWorks</span>
+                <span class="tag">Lean Methodologies</span>
+                <span class="tag">Hardware Schematics</span>
+            </div>
+        </div>
+        
+        <div class="card item projects">
+            <div class="card-header">
+                <div>
+                    <h2>Vision-Language-Action Model Assessment [cite: 82]</h2>
+                </div>
+                <div class="date-badge">Feb 2026 - Apr 2026 [cite: 83]</div>
+            </div>
+            <ul>
+                <li>Researched AI-enabled perception and decision-making systems for autonomous vehicle applications[cite: 84].</li>
+                <li>Evaluated integration of sensor inputs, language models, and vehicle control frameworks using Simulink[cite: 84].</li>
+                <li>Conducted literature review and technical analysis of emerging autonomous driving architecture for Level 5 autonomy[cite: 84].</li>
+            </ul>
+            <div class="tags">
+                <span class="tag">Simulink</span>
+                <span class="tag">AI Systems</span>
+                <span class="tag">Autonomous Vehicles</span>
+            </div>
+        </div>
+
+        <div class="card item skills">
+            <div class="card-header">
+                <div>
+                    <h2>Technical Skills & Training [cite: 72]</h2>
+                </div>
+            </div>
+            <p><strong>Engineering:</strong> SolidWorks, MATLAB/SIMULINK, Python, GD&T [cite: 73]</p>
+            <p><strong>Software:</strong> Microsoft Office Suite (Advanced Excel, SharePoint, PowerPoint, Word), Google Workspace, SAP [cite: 74]</p>
+            <p><strong>Certification:</strong> Driver's Licence (Class 5), WHMIS, Emergency First Aid and CPR Level 1 [cite: 74]</p>
+            <div class="tags">
+                <span class="tag">SolidWorks</span>
+                <span class="tag">MATLAB</span>
+                <span class="tag">Python</span>
+                <span class="tag">SAP</span>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Filtering Logic
+        function filterSelection(category) {
+            let items = document.getElementsByClassName("item");
+            let buttons = document.getElementsByClassName("filter-btn");
+
+            // Update button styles
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove("active");
+                if(buttons[i].getAttribute("onclick").includes(category)) {
+                    buttons[i].classList.add("active");
+                }
+            }
+
+            // Display elements conditionally
+            for (let i = 0; i < items.length; i++) {
+                items[i].classList.remove("show");
+                if (category === "all") {
+                    items[i].classList.add("show");
+                } else if (items[i].classList.contains(category)) {
+                    items[i].classList.add("show");
+                }
+            }
+        }
+
+        // Run on start
+        filterSelection("all");
+    </script>
+</body>
+</html>
